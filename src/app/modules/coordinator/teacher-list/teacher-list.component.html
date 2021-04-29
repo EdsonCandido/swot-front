@@ -1,1 +1,33 @@
-<p>teacher-list works!</p>
+<div>
+  <form>
+    <div  class="form-group form-inline">
+      Pesquisar por Professor: <input class="form-control ml-2" type="text" [formControl]="filter" />
+    </div>
+  </form>
+  <table class="table table-sm table-striped" *ngIf="listTeacher$ | async; else loadingTeacher">
+    <thead>
+      <tr>
+        <th class="coll">#</th>
+        <th class="coll">Nome</th>
+        <th class="coll">E-mail</th>
+        <th class="coll">Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let teacher of listTeacher$ | async">
+        <th scope="row">{{ teacher.id }}</th>
+        <td><ngb-highlight [result]="teacher.name" [term]="filter.value"></ngb-highlight></td>
+        <td><ngb-highlight [result]="teacher.email"[term]="filter.value"></ngb-highlight></td>
+        <td class="overflow-hidden">
+          <div ngbDropdown container="body">
+            <button class="btn btn-primary btn-sm" ngbDropdownToggle>Ações</button>
+            <div ngbDropdownMenu>
+              <button ngbDropdownItem (click)="open(teacher.name)">Detalhes</button>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <ng-template #loadingTeacher><span>Carregando professores...</span></ng-template>
+</div>

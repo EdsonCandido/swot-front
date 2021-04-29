@@ -1,1 +1,38 @@
-<p>teacher works!</p>
+<nav class="navbar navbar-dark bg-primary">
+  <a class="navbar-brand">SWOT</a>
+  <div class="form-inline">
+    <button class="btn btn-info my-2 my-sm-0" (click)="logoff()">Sair</button>
+  </div>
+</nav>
+<br />
+
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <div class="card">
+        <h5 class="card-header">Temas</h5>
+        <div class="card-body">
+          <h5 class="card-title">...</h5>
+
+          <a [routerLink]="['themes']" class="btn btn-secondary mr-1">Listar</a>
+          <a [routerLink]="['new']" class="btn btn-success">Novo</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="card">
+        <h5 class="card-header">Estudantes</h5>
+        <div class="card-body">
+          <h5 class="card-title">...</h5>
+
+          <a [routerLink]="['students']" class="btn btn-secondary mr-1">Listar</a>
+          <a [routerLink]="['advisor']" class="btn btn-warning mr-1">Orientar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr />
+  <br />
+  <router-outlet></router-outlet>
+</div>
+<br />

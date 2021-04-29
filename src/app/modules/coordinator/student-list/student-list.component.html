@@ -1,1 +1,31 @@
-<p>student-list works!</p>
+<form>
+  <div class="form-group form-inline">
+      Pesquisar por Temas: <input class="form-control ml-2" type="text" [formControl]="filter"/>
+  </div>
+</form>
+<table class="table table-sm table-striped" *ngIf="listStudent$ | async ; else loadingStudent">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nome</th>
+      <th scope="col">E-mail</th>
+      <th scope="col">Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let student of listStudent$ | async">
+      <th scope="row">{{ student.id}}</th>
+     <td><ngb-highlight [result]="student.name" [term]="filter.value"></ngb-highlight></td>
+     <td><ngb-highlight [result]="student.email" [term]="filter.value"></ngb-highlight></td>
+     <td class="overflow-hidden">
+      <div ngbDropdown container="body">
+        <button class="btn btn-primary btn-sm" ngbDropdownToggle>Ações</button>
+        <div ngbDropdownMenu>
+          <button ngbDropdownItem (click)="open('Contato: '+student.email, student.name)">Detalhes</button>
+        </div>
+      </div>
+    </td>
+    </tr>
+  </tbody>
+</table>
+<ng-template #loadingStudent> <span>Carregando Estudantes...</span></ng-template>

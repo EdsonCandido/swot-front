@@ -12,6 +12,11 @@ import { StudentComponent } from './student/student.component';
 import { CoordinatorComponent } from './coordinator/coordinator.component';
 
 import { LoginService } from 'src/app/services/login.service';
+import { ToastService } from 'src/app/services/toast.service';
+import { ToastComponent } from 'src/app/shared/components/toast/toast.component';
+import { StudentFormComponent } from './student-form/student-form.component';
+import { StudentService } from 'src/app/services/student.service';
+import { EmailService } from 'src/app/services/email.service';
 
 @NgModule({
   declarations: [
@@ -19,6 +24,8 @@ import { LoginService } from 'src/app/services/login.service';
     TeacherComponent,
     StudentComponent,
     CoordinatorComponent,
+    ToastComponent,
+    StudentFormComponent,
   ],
   imports: [
     CommonModule,
@@ -28,6 +35,6 @@ import { LoginService } from 'src/app/services/login.service';
     ReactiveFormsModule,
     LoginRoutingModule,
   ],
-  providers: [LoginService],
+  providers: [LoginService, ToastService, StudentService, EmailService],
 })
 export class LoginModule {}

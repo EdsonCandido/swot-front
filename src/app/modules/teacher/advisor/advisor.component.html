@@ -1,0 +1,72 @@
+<div>
+  <hr />
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Selecione o estudante</h5>
+          <h6 class="card-subtitle mb-2 text-muted"><hr /></h6>
+          <select name="student" [(ngModel)]="student" class="form-control">
+            <option selected>...</option>
+            <option
+              *ngFor="let student of listStudent$ | async"
+              value="{{ student.id }}"
+            >
+              {{ student.name }}
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Selecione o tema</h5>
+          <h6 class="card-subtitle mb-2 text-muted"><hr /></h6>
+          <select name="theme" [(ngModel)]="theme" class="form-control">
+            <option selected>...</option>
+            <option
+              *ngFor="let theme of listTheme$ | async"
+              value="{{ theme.id }}"
+            >
+              {{ theme.theme }}
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Selecione o status</h5>
+          <h6 class="card-subtitle mb-2 text-muted"><hr /></h6>
+          <select name="status" [(ngModel)]="status" class="form-control">
+            <option selected class="text-white bg-success" >INÍCIO</option>
+            <option class="bg-warning text-dark">PENDENTE</option>
+            <option class="bg-danger text-white">NÃO CONCLUÍDO</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br />
+
+  <div class="text-right">
+    <button type="button" (click)="onSubmit()" class="btn btn-success">
+      Cadastrar
+    </button>
+  </div>
+</div>
+<br />
+<hr />
+<div class="row">
+  <div class="col">
+    <app-theme-list></app-theme-list>
+  </div>
+  <div class="col">
+    <app-student-list></app-student-list>
+  </div>
+</div>

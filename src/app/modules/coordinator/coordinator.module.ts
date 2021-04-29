@@ -16,6 +16,11 @@ import { StudentListComponent } from './student-list/student-list.component';
 import { TeacherListComponent } from './teacher-list/teacher-list.component';
 import { ThemeListComponent } from './theme-list/theme-list.component';
 import { AdvisorListComponent } from './advisor-list/advisor-list.component';
+import { AdvisorService } from 'src/app/services/advisor.service';
+import { StudentFormComponent } from './student-form/student-form.component';
+import { EmailService } from 'src/app/services/email.service';
+import { ToastService } from 'src/app/services/toast.service';
+import { StudentContactComponent } from './student-contact/student-contact.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +30,8 @@ import { AdvisorListComponent } from './advisor-list/advisor-list.component';
     TeacherListComponent,
     ThemeListComponent,
     AdvisorListComponent,
+    StudentFormComponent,
+    StudentContactComponent,
   ],
   imports: [
     CommonModule,
@@ -34,6 +41,13 @@ import { AdvisorListComponent } from './advisor-list/advisor-list.component';
     ReactiveFormsModule,
     CoordinatorRoutingModule,
   ],
-  providers: [ThemeService, TeacherService, StudentService],
+  providers: [
+    ThemeService,
+    TeacherService,
+    StudentService,
+    AdvisorService,
+    EmailService,
+    ToastService,
+  ],
 })
 export class CoordinatorModule {}

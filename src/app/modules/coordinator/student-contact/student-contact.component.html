@@ -1,0 +1,46 @@
+<div>
+  <form #form="ngForm">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Para</label>
+      <input
+        type="text"
+        name="to"
+        [(ngModel)]="email.to"
+        class="form-control"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Título</label>
+      <input
+        type="text"
+        name="subject"
+        [(ngModel)]="email.subject"
+        class="form-control"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="exampleFormControlTextarea1">Mensagem</label>
+      <textarea
+        class="form-control"
+        name="message"
+        [(ngModel)]="email.message"
+        rows="3"
+        required
+      ></textarea>
+    </div>
+    <hr />
+    <div class="text-right">
+      <div class="btn-group" role="group">
+        <button
+          class="btn btn-primary"
+          [disabled]="form.form.invalid"
+          (click)="onSubmit()"
+        >
+          Enviar
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

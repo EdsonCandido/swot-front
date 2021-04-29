@@ -1,1 +1,62 @@
-<p>theme-form works!</p>
+<form #form="ngForm">
+  <div class="row">
+    <div class="col-10">
+      <div class="form-group">
+        <label for="exampleInputEmail1">Área</label>
+        <input
+          type="text"
+          name="area"
+          [(ngModel)]="post.area"
+          class="form-control"
+          required
+        />
+      </div>
+    </div>
+    <div class="col">
+      <div class="form-group">
+        <label for="exampleInputEmail1">Período</label>
+        <input
+          type=""
+          name="area"
+          [(ngModel)]="post.period"
+          placeholder="xxxx.x"
+          class="form-control"
+          required
+        />
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="exampleInputPassword1">Tema</label>
+    <input
+      type="text"
+      name="theme"
+      [(ngModel)]="post.theme"
+      class="form-control"
+      required
+    />
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">Descrição</label>
+    <textarea
+      class="form-control"
+      name="descriptions"
+      [(ngModel)]="post.description"
+      rows="3"
+      required
+    ></textarea>
+  </div>
+  <hr />
+  <div class="text-right">
+    <div class="btn-group" role="group">
+      <button
+        class="btn btn-success"
+        [disabled]="form.form.invalid"
+        (click)="onSubmit()"
+      >
+        Salvar
+      </button>
+    </div>
+  </div>
+</form>

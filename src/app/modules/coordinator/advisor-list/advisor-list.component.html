@@ -1,1 +1,35 @@
-<p>advisor-list works!</p>
+<div>
+  <form>
+    <div  class="form-group form-inline">
+      Pesquisar por Professor: <input class="form-control ml-2" type="text" [formControl]="filter" />
+    </div>
+  </form>
+  <table class="table table-sm table-striped" *ngIf="listAdvisor$ | async; else loadingAdvisor">
+    <thead>
+      <tr>
+        <th class="coll">#</th>
+        <th class="coll">Docente</th>
+        <th class="coll">Discente</th>
+        <th class="coll">Tema</th>
+        <th class="coll">Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let advisor of listAdvisor$ | async">
+        <th scope="row">{{ advisor.id }}</th>
+        <td><ngb-highlight [result]="advisor.teacherOwner.name" [term]="filter.value"></ngb-highlight></td>
+        <td><ngb-highlight [result]="advisor.StudentOwner.name" [term]="filter.value"></ngb-highlight></td>
+        <td><ngb-highlight [result]="advisor.PostOwner.theme" [term]="filter.value"></ngb-highlight></td>
+        <td class="overflow-hidden">
+          <div ngbDropdown container="body">
+            <button class="btn btn-primary btn-sm" ngbDropdownToggle>Ações</button>
+            <div ngbDropdownMenu>
+              <button ngbDropdownItem (click)="open(advisor.PostOwner.theme, advisor.PostOwner.description)">Detalhes</button>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <ng-template #loadingAdvisor><span>Carregando esquemas...</span></ng-template>
+</div>
