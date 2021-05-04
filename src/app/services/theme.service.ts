@@ -44,6 +44,11 @@ export class ThemeService {
       )
       .pipe(retry(1), catchError(this.handleError));
   }
+  destroy(theme: ITheme) {
+    return this.httpClient
+      .put(this.url + '/' + theme.id, this.handleError)
+      .pipe(retry(1), catchError(this.handleError));
+  }
 
   //Tratamentos de erros
   handleError(error: HttpErrorResponse) {

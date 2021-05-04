@@ -29,4 +29,7 @@ export class ThemeListComponent implements OnInit {
       queryParams: { id: post.id },
     });
   }
+  destroy(post) {
+    this.themeService.destroy(post).toPromise();
+  }
 }
